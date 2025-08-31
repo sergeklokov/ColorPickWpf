@@ -7,20 +7,36 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Button x:Name="btnPickColor" Content="Pick Color Button"
-                HorizontalAlignment="Left" Margin="53,57,0,0"
-                VerticalAlignment="Top" Height="61" Width="201"
-                FontWeight="Bold" FontFamily="Segoe UI"
-                Grid.Row="0"
-                Click="btnPickColor_Click"/>
-        <xctk:ColorPicker x:Name="colorPicker"
-                          SelectedColorChanged="ColorPicker_SelectedColorChanged"
-                          Grid.Row="1"
-                          Visibility="Collapsed"
-                          Focusable="True"/>
+        <!-- Canvas fills the entire window -->
+        <Canvas x:Name="drawCanvas"
+                Background="White"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                Panel.ZIndex="0"/>
+        <!-- Overlay grid for controls, aligned to the left, vertical layout -->
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Panel.ZIndex="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Button x:Name="btnPickColor" Content="Pick Color Button"
+                    Margin="10"
+                    Height="40" Width="150"
+                    FontWeight="Bold" FontFamily="Segoe UI"
+                    Grid.Row="0"
+                    Click="btnPickColor_Click"/>
+            <Button x:Name="btnDraw" Content="Draw Point"
+                    Margin="10"
+                    Height="40" Width="150"
+                    FontWeight="Bold" FontFamily="Segoe UI"
+                    Grid.Row="1"
+                    Click="btnDraw_Click"/>
+            <xctk:ColorPicker x:Name="colorPicker"
+                              SelectedColorChanged="ColorPicker_SelectedColorChanged"
+                              Visibility="Collapsed"
+                              Focusable="True"
+                              Grid.Row="2"/>
+        </Grid>
     </Grid>
 </Window>

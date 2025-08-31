@@ -37,5 +37,26 @@ namespace ColorPickWpf
             colorPicker.IsOpen = true; // Open the dropdown immediately
             colorPicker.Focus();
         }
+
+        private void btnDraw_Click(object sender, RoutedEventArgs e)
+        {
+            // Example: Draw a point at (120, 120) with a radius of 6
+            double x = 120;
+            double y = 120;
+            double radius = 6;
+
+            Ellipse point = new Ellipse
+            {
+                Width = radius * 2,
+                Height = radius * 2,
+                Fill = btnPickColor.Background // Use the button's background color
+            };
+
+            // Center the ellipse at (x, y)
+            Canvas.SetLeft(point, x - radius);
+            Canvas.SetTop(point, y - radius);
+
+            drawCanvas.Children.Add(point);
+        }
     }
 }
